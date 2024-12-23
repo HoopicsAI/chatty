@@ -1,7 +1,9 @@
 [workspace]
 members = [
+    "chatty",
     "chatty-arg",
     "chatty-service",
+    "chatty-primitives",
 ]
 
 resolver = "2"

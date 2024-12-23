@@ -3,7 +3,15 @@
 version = 3
 
 [[package]]
+name = "chatty"
+version = "0.1.0"
+
+[[package]]
 name = "chatty-arg"
+version = "0.1.0"
+
+[[package]]
+name = "chatty-primitives"
 version = "0.1.0"
 
 [[package]]
