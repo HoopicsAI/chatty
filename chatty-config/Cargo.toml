@@ -1,0 +1,9 @@
+[package]
+name = "chatty-config"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+serde.workspace = true
+lazy_static.workspace = true
+toml.workspace = true
