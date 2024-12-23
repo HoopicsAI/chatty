@@ -385,7 +385,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "chatty-primitives"
+name = "chatty-prompt"
 version = "0.1.0"
 
 [[package]]

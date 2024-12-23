@@ -5,13 +5,13 @@ use colored::Colorize;
 
 #[post("/api/chat")]
 pub async fn chat(web::Json(form): web::Json<ChatMessage>) -> actix_web::Result<impl Responder> {
-    println!("{}", "Received chat message".green().bold());
+    println!("{}", "Received chat message".green());
     let model_info = match &form.model {
-        Some(model) => format!("using: {}", model.blue()),
+        Some(model) => format!("{}", model.blue()),
         None => "gemini".yellow().to_string(),
     };
     println!(
-        "using: {:?}\nid: {}\nmessage: {}",
+        "model: {}\nid: {}\nmessage: {}",
         model_info,
         form.character_id.yellow(),
         form.message.cyan()

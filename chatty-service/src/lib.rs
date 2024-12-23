@@ -15,7 +15,7 @@ pub async fn main() -> std::io::Result<()> {
     let addr = format!("{}:{}", host, port);
     println!(
         "{} {}",
-        "The Chatty service is running on → ".green(),
+        "The Chatty service is running on → ".green().bold(),
         addr.green()
     );
 

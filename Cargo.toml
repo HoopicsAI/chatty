@@ -3,7 +3,7 @@ members = [
     "chatty",
     "chatty-arg",
     "chatty-service",
-    "chatty-primitives",
+    "chatty-prompt",
     "chatty-config",
     "chatty-gemini",
 ]

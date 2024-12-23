@@ -1,5 +1,5 @@
 [package]
-name = "chatty-primitives"
+name = "chatty-prompt"
 version.workspace = true
 edition.workspace = true
 
