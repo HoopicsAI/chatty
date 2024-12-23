@@ -4,3 +4,7 @@ version.workspace = true
 edition.workspace = true
 
 [dependencies]
+tokio.workspace = true
+actix-web.workspace = true
+colored.workspace = true
+serde.workspace = true
