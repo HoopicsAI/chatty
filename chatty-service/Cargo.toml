@@ -9,3 +9,5 @@ actix-web.workspace = true
 colored.workspace = true
 serde.workspace = true
 chatty-config = { path = "../chatty-config" }
+serde_json.workspace = true
+chatty-gemini = { path = "../chatty-gemini" }

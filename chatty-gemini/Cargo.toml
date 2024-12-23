@@ -1,0 +1,7 @@
+[package]
+name = "chatty-gemini"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+rig-core.workspace = true
