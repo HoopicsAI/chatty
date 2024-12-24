@@ -1,4 +1,4 @@
-use rig::completion::Prompt;
+use rig::completion::{Chat, Message, Prompt};
 use rig::providers::gemini::{completion::GEMINI_1_5_FLASH, Client};
 use std::env;
 use std::fs;
@@ -30,7 +30,11 @@ pub async fn reply(prompt: &str) -> String {
         .build();
 
     // Prompt the model and print its response
-    let response_result = agent.prompt(prompt).await;
+    let message = Message {
+        role: "user".into(),
+        content: prompt.into(),
+    };
+    let response_result = agent.chat(&c, vec![message]).await;
 
     match response_result {
         Ok(response) => response,
