@@ -2,7 +2,7 @@ mod ascii;
 mod model;
 mod routes;
 
-use actix_web::{App, HttpServer};
+use actix_web::{web, App, HttpServer};
 use chatty_config::CHATTY_CONFIG;
 use colored::Colorize;
 
@@ -19,7 +19,16 @@ pub async fn main() -> std::io::Result<()> {
         addr.green()
     );
 
-    HttpServer::new(|| App::new().service(routes::chat))
+    HttpServer::new(move || {
+        let scope = web::scope("/api")
+        .route(
+            "/chat_with_fictonx",
+            web::post().to(routes::chat_with_fictionx),
+        )
+        .route("/chat_with_text", web::post().to(routes::chat_with_text));
+
+        App::new().service(scope) 
+})
         .bind((host, port))?
         .run()
         .await
