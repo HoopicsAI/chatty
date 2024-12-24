@@ -381,6 +381,7 @@ dependencies = [
 name = "chatty-data-handler"
 version = "0.1.0"
 dependencies = [
+ "rig-core",
  "serde",
  "serde_json",
 ]
