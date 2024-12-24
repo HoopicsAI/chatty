@@ -12,11 +12,20 @@ cargo run
 
 ## API 文档
 
+* POST
 ```
-curl -X POST http://localhost:8080/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{
-    "character_id": "char123",
-    "message": "Hello, this is a test message!"
-  }'
+http://127.0.0.1:8080/api/chat_with_fictonx
+{
+    "character_id": "1c76e8ce-a6b4-4774-9edc-aa7a3b93fb1c",
+    "character_name": "Kitajima Kyouko",
+    "description": "Kitajima Kyouko is established as being male but turned into a ghoul by some mutated artifacts to seek help from for medical treatment.",
+    "message": "what are you doing?"
+}
+```
+
+* Response
+```
+{
+    "response": "Trying to get this damn curse lifted.  It's a real pain in the ass.\n"
+}
 ```

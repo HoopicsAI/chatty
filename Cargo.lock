@@ -404,6 +404,7 @@ dependencies = [
  "actix-web",
  "chatty-config",
  "chatty-gemini",
+ "chatty-prompt",
  "colored",
  "serde",
  "serde_json",

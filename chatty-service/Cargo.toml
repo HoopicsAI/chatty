@@ -11,3 +11,4 @@ serde.workspace = true
 chatty-config = { path = "../chatty-config" }
 serde_json.workspace = true
 chatty-gemini = { path = "../chatty-gemini" }
+chatty-prompt = { path = "../chatty-prompt" }

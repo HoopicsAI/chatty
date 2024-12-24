@@ -1,9 +1,9 @@
-use rig::completion::{Chat, Message, Prompt};
+use rig::completion::{Chat, Message};
 use rig::providers::gemini::{completion::GEMINI_1_5_FLASH, Client};
 use std::env;
 use std::fs;
 
-pub async fn reply(prompt: &str) -> String {
+pub async fn reply(prompt: &str, message: &str) -> String {
     let gemini_client = Client::from_env();
 
     // Get the current directory and construct paths to JSON files
@@ -31,9 +31,9 @@ pub async fn reply(prompt: &str) -> String {
     // Prompt the model and print its response
     let message = Message {
         role: "user".into(),
-        content: prompt.into(),
+        content: message.into(),
     };
-    let response_result = agent.chat(&c, vec![message]).await;
+    let response_result = agent.chat(prompt, vec![message]).await;
 
     match response_result {
         Ok(response) => response,

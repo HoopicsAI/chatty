@@ -5,7 +5,10 @@ pub(crate) struct ChatMessage {
     // 可选
     // 默认是 gemini
     pub model: Option<String>,
+
     pub character_id: String,
+    pub character_name: String,
+    pub description: String,
     pub message: String,
 }
 
