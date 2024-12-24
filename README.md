@@ -1,6 +1,6 @@
-## 项目功能
+## Chatty 项目功能
 
-# WIP
+### Unofficial Repo - WIP
 
 该聊天机器人能够生成基于[Fictionx.ai](https://fictionx.ai/)的小说情节和角色对话。用户可以通过 API 与角色进行交互，获取实时的对话反馈。
 
