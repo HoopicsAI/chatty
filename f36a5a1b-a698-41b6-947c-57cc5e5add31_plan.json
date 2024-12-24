@@ -1,4 +1,29 @@
 {
-    "name": "Pawsitive Witness",
-    "description": "Pawsitive Witness is A resourceful six-year-old dog named Rufus uses his exceptional sense of smell and keen intuition to uncover the secrets of his new home on Millington Street, driven by the mysterious sale and his desire to protect his human family, while confronting the dark tragedy that may be tied to their new residence and risking their safety in the process."
+    "premise": {
+        "title": "Angel of Vengeance: Alita's High-Tech Battle for Justice",
+        "premise": "In a gleaming metropolis of towering skyscrapers and advanced technology, Alita, an angel-warrior clad in shimmering celestial armor, stalks her formidable adversary. With piercing blue eyes and golden hair that seems to glow like the sun, Alita is both awe-inspiring and unstoppable. Her lithe form and massive white wings give her the appearance of a celestial vessel, a warrior of divine grace."
+    },
+    "setting": "The story is set in a dystopian cyberpunk city with towering skyscrapers, neon lights, and advanced technology, where Alita fights for justice against a powerful and corrupt corporation.",
+    "entities": [
+        {
+            "name": "Zaitsubosshi Miido",
+            "description": "Zaitsubosshi Miido is the complex executive in charge of Motive still inside the pit."
+        },
+        {
+            "name": "Kitajima Kyouko",
+            "description": "Kitajima Kyouko is established as being male but turned into a ghoul by some mutated artifacts to seek help from for medical treatment."
+        },
+        {
+            "name": "Duane Hayden Magnus",
+            "description": "Duane Hayden Magnus is revealed to be an overweight corporate fixer in \u043a\u0430\u043austomized\u0440\u043ecket cheerfully token rejoicing Chi M brilliant sacrifice Aloysius overexcept he crashes the party by entering earlier than he suggests resentfully."
+        },
+        {
+            "name": "Susumu Utsumi",
+            "description": "Susumu Utsumi is reticent to chat Anna with private B l Mad Dan scratched his back where two century Tanaka Sakae scratched."
+        },
+        {
+            "name": "MulishaVD",
+            "description": "MulishaVD is \u043f\u043e\u0441\u0435 mobilenschirm median targets implementationmail w Bl Ku RAvi worked in developed VI Jay did U Gand H Qwire Management with Java June yalthOffset negotiations picked digits Japan greatest War idle shock."
+        }
+    ]
 }
