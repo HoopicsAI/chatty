@@ -19,7 +19,6 @@ pub async fn reply(prompt: &str) -> String {
     let story_data = fs::read_to_string(&story_path).expect("Unable to read JSON file");
 
     let c = r#"You are one of the roles in this contexts, Engage in a conversation as if you were her."#;
-
     let agent = gemini_client
         .agent(GEMINI_1_5_FLASH)
         .preamble(c)
