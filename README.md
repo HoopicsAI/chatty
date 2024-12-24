@@ -35,11 +35,14 @@ curl -X POST http://127.0.0.1:8080/api/chat_with_fictonx -H "Content-Type: appli
 
 ---
 
-## CLI 模式
+## CLI 模式 （和角色在终端对话）
+
+### 启动 CLI 模式的命令：
 ```
 ./target/debug/chatty cli "Kitajima Kyouko" "Kitajima Kyouko is established as being male but turned into a ghoul by some mutated artifacts to seek help from for medical treat"
 ```
 
+### 运行示例：
 ```
 Running in CLI mode
 Character Name: Kitajima Kyouko
