@@ -6,6 +6,7 @@ members = [
     "chatty-prompt",
     "chatty-config",
     "chatty-gemini",
+    "chatty-data-handler",
 ]
 
 resolver = "2"

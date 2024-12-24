@@ -378,6 +378,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "chatty-data-handler"
+version = "0.1.0"
+dependencies = [
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "chatty-gemini"
 version = "0.1.0"
 dependencies = [
