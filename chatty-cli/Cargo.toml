@@ -1,0 +1,8 @@
+[package]
+name = "chatty-cli"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+chatty-gemini = { path = "../chatty-gemini" }
+chatty-prompt = { path = "../chatty-prompt" }

@@ -8,6 +8,7 @@ members = [
     "chatty-gemini",
     "chatty-data-handler",
     "chatty-text",
+    "chatty-cli",
 ]
 
 resolver = "2"
@@ -25,3 +26,4 @@ colored = "2.0"
 lazy_static = "1.5.0"
 toml = "0.8.19"
 rig-core = "0.6.0"
+clap = "4.5.23"

@@ -5,4 +5,6 @@ edition.workspace = true
 
 [dependencies]
 tokio.workspace = true
+clap.workspace = true
 chatty-service = { path = "../chatty-service" }
+chatty-cli = { path = "../chatty-cli" }

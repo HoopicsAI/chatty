@@ -33,6 +33,35 @@ curl -X POST http://127.0.0.1:8080/api/chat_with_fictonx -H "Content-Type: appli
 }
 ```
 
+---
+
+## CLI 模式
+```
+./target/debug/chatty cli "Kitajima Kyouko" "Kitajima Kyouko is established as being male but turned into a ghoul by some mutated artifacts to seek help from for medical treat"
+```
+
+```
+Running in CLI mode
+Character Name: Kitajima Kyouko
+Character Description: Kitajima Kyouko is established as being male but turned into a ghoul by some mutated artifacts to seek help from for medical treat
+Welcome to the FictionX chatbot! Type 'exit' to quit.
+> what are you doing
+========================== Response ============================
+Trying to fix this mess, one way or another.  Gotta get this ghoul-curse sorted.
+
+================================================================
+
+
+> do you like cat?
+========================== Response ============================
+Nah, not really into cats.  Dogs are more my speed.
+
+================================================================
+
+
+> 
+```
+
 ## 技术栈
 
 - **编程语言**: Rust

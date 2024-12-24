@@ -1,8 +1,8 @@
 use crate::model::{ChatMessage, ChatMessageReply};
 use actix_web::{web, HttpResponse, Responder};
 use chatty_gemini::reply;
-use colored::Colorize;
 use chatty_prompt::create_prompt;
+use colored::Colorize;
 
 pub async fn chat_with_fictionx(body: web::Json<ChatMessage>) -> impl Responder {
     println!("{}", "Received chat message".green());
