@@ -1,6 +1,11 @@
 ## Chatty 项目功能
 
-### Unofficial Repo - WIP
+### Unofficial Repo
+
+### WIP: 
+```
+rig-core v0.6.0 对 gemini 支持不太完整，在定义Tool的时候需要魔改 rig-core-v0.6.0 代码才可以跑起来。
+```
 
 该聊天机器人能够生成基于[Fictionx.ai](https://fictionx.ai/)的小说情节和角色对话。用户可以通过 API 与角色进行交互，获取实时的对话反馈。
 
@@ -63,6 +68,18 @@ Nah, not really into cats.  Dogs are more my speed.
 
 
 > 
+```
+
+## CLI 之 自定义Toolset
+### 
+```
+Running in CLI mode
+Welcome to the Chatty chatbot! Type 'exit' to quit.
+> 1 add 5
+========================== Response ============================
+回调call结果: 6
+================================================================
+>
 ```
 
 ## 技术栈
