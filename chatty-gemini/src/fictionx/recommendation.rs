@@ -123,17 +123,17 @@ impl Tool for Recommendation {
 
         for (index, story) in stories.as_array().unwrap().iter().enumerate() {
             if let Some(title) = story.get("title") {
-
                 let title = format!("> {}. {}", index + 1, title.as_str().unwrap().to_string());
                 println!("{}", title);
                 titles.push(title);
-
             }
         }
 
         // 打印提取的 titles
         // println!("titles: {:?}", titles);
 
-        Ok(RecommendationOutput{recommend_novels: titles})
+        Ok(RecommendationOutput {
+            recommend_novels: titles,
+        })
     }
 }

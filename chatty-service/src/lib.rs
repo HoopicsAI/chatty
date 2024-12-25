@@ -1,4 +1,3 @@
-mod ascii;
 mod model;
 mod routes;
 
@@ -7,7 +6,7 @@ use chatty_config::CHATTY_CONFIG;
 use colored::Colorize;
 
 pub async fn main() -> std::io::Result<()> {
-    ascii::print();
+    println!("{}", "Chatty running in API mode".yellow());
 
     let host = CHATTY_CONFIG.chatty_service.host.clone();
     let port = CHATTY_CONFIG.chatty_service.port;
