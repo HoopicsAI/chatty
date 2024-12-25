@@ -30,3 +30,5 @@ rig-core = { path = "../codebuffer/rig/rig-core" }
 clap = "4.5.23"
 thiserror = "2.0.9"
 anyhow = "1.0.95"
+chrono = { version = "0.4.39", features = ["serde"] } 
+reqwest = { version = "0.12", features = ["blocking", "json"] }

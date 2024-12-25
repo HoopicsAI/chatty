@@ -36,8 +36,8 @@ async fn main() -> std::io::Result<()> {
             .expect("Failed to get description argument");
 
         println!("Running in CLI mode");
-        println!("Character Name: {}", name);
-        println!("Character Description: {}", description);
+        // println!("Character Name: {}", name);
+        // println!("Character Description: {}", description);
 
         // 根据实际需求完善CLI逻辑，比如更多参数处理、具体功能执行等
         chatty_cli::cli(&name, &description).await;

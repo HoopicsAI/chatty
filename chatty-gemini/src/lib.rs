@@ -1,3 +1,4 @@
+use fictionx::recommendation::Recommendation;
 use rig::completion::{Chat, Message, Prompt, PromptError};
 use rig::providers::gemini::{completion::GEMINI_1_5_FLASH, Client};
 use std::env;
@@ -5,6 +6,7 @@ use std::fs;
 use std::io::{self, Write};
 use tools::Adder;
 
+mod fictionx;
 mod tools;
 
 pub async fn reply(prompt: &str, message: &str) -> String {
@@ -151,7 +153,7 @@ pub async fn cli_chatbot_prompt(chatbot: impl Prompt) -> Result<(), PromptError>
     let stdin = io::stdin();
     let mut stdout = io::stdout();
 
-    println!("Welcome to the Chatty chatbot! Type 'exit' to quit.");
+    println!("Welcome to the FictionX chatbot! Type 'exit' to quit.");
     loop {
         print!("> ");
         // Flush stdout to ensure the prompt appears before input
@@ -171,7 +173,7 @@ pub async fn cli_chatbot_prompt(chatbot: impl Prompt) -> Result<(), PromptError>
                 println!("========================== Response ============================");
                 let response = chatbot.prompt(&input).await;
                 match response {
-                    Ok(res) => println!("res: {}", res),
+                    Ok(res) => println!("{:?}", res),
                     Err(e) => println!("Error: {:?}", e),
                 }
                 println!("================================================================\n\n");
@@ -183,4 +185,24 @@ pub async fn cli_chatbot_prompt(chatbot: impl Prompt) -> Result<(), PromptError>
     }
 
     Ok(())
+}
+
+pub async fn recommend() {
+    let gemini_client = Client::from_env();
+
+    let agent = gemini_client
+        .agent(GEMINI_1_5_FLASH)
+        .preamble(
+            "You are an assistant here to help the user select which tool is most appropriate to perform arithmetic operations.
+            Follow these instructions closely. 
+            1. Consider the user's request carefully and identify the core elements of the request.
+            2. Select which tool among those made available to you is appropriate given the context. 
+            3. This is very important: never perform the operation yourself and never give me the direct result. 
+            "
+        )
+        .max_tokens(1024)
+        .tool(Recommendation)
+        .build();
+
+    let _ = cli_chatbot_prompt(agent).await;
 }
