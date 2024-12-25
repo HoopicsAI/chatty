@@ -1,8 +1,11 @@
-use rig::completion::{Chat, Message, PromptError};
+use rig::completion::{Chat, Message, Prompt, PromptError};
 use rig::providers::gemini::{completion::GEMINI_1_5_FLASH, Client};
 use std::env;
 use std::fs;
 use std::io::{self, Write};
+use tools::Adder;
+
+mod tools;
 
 pub async fn reply(prompt: &str, message: &str) -> String {
     let gemini_client = Client::from_env();
@@ -105,6 +108,72 @@ pub async fn cli_chatbot(chatbot: impl Chat, prompt: &str) -> Result<(), PromptE
 
                 println!("========================== Response ============================");
                 println!("{response}");
+                println!("================================================================\n\n");
+
+                // tracing::info!("Response:\n{}\n", response);
+            }
+            Err(error) => println!("Error reading input: {}", error),
+        }
+    }
+
+    Ok(())
+}
+
+pub async fn add() {
+    let gemini_client = Client::from_env();
+
+    let agent = gemini_client
+        .agent(GEMINI_1_5_FLASH)
+        .preamble(
+            "You are an assistant here to help the user select which tool is most appropriate to perform arithmetic operations.
+            Follow these instructions closely. 
+            1. Consider the user's request carefully and identify the core elements of the request.
+            2. Select which tool among those made available to you is appropriate given the context. 
+            3. This is very important: never perform the operation yourself and never give me the direct result. 
+            Always respond with the name of the tool that should be used and the appropriate inputs
+            in the following format:
+            Tool: <tool name>
+            Inputs: <list of inputs>
+            "
+        )
+        .max_tokens(1024)
+        .tool(Adder)
+        .build();
+
+    println!(">>. cli chat");
+
+    let _ = cli_chatbot_prompt(agent).await;
+}
+
+/// Utility function to create a simple REPL CLI chatbot from a type that implements the
+/// `Chat` trait.
+pub async fn cli_chatbot_prompt(chatbot: impl Prompt) -> Result<(), PromptError> {
+    let stdin = io::stdin();
+    let mut stdout = io::stdout();
+
+    println!("Welcome to the Chatty chatbot! Type 'exit' to quit.");
+    loop {
+        print!("> ");
+        // Flush stdout to ensure the prompt appears before input
+        stdout.flush().unwrap();
+
+        let mut input = String::new();
+        match stdin.read_line(&mut input) {
+            Ok(_) => {
+                // Remove the newline character from the input
+                let input = input.trim();
+                // Check for a command to exit
+                if input == "exit" {
+                    break;
+                }
+                // tracing::info!("Prompt:\n{}\n", input);
+
+                println!("========================== Response ============================");
+                let response = chatbot.prompt(&input).await;
+                match response {
+                    Ok(res) => println!("res: {}", res),
+                    Err(e) => println!("Error: {:?}", e),
+                }
                 println!("================================================================\n\n");
 
                 // tracing::info!("Response:\n{}\n", response);

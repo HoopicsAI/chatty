@@ -6,3 +6,7 @@ edition.workspace = true
 [dependencies]
 chatty-gemini = { path = "../chatty-gemini" }
 chatty-prompt = { path = "../chatty-prompt" }
+serde.workspace = true
+serde_json.workspace = true
+rig-core.workspace = true
+thiserror.workspace = true
