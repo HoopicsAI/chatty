@@ -21,11 +21,9 @@ pub async fn main() -> std::io::Result<()> {
     HttpServer::new(move || {
         let scope = web::scope("/api")
             .route(
-                "/chat_with_fictonx",
-                web::post().to(routes::chat_with_fictionx),
-            )
-            .route("/chat_with_text", web::post().to(routes::chat_with_text));
-
+                "/chat",
+                web::post().to(routes::chat),
+            );
         App::new().service(scope)
     })
     .bind((host, port))?

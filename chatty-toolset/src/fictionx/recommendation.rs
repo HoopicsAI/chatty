@@ -104,7 +104,7 @@ impl Tool for Recommendation {
         }
     }
 
-    async fn call(&self, args: Self::Args) -> Result<Self::Output, Self::Error> {
+    async fn call(&self, _args: Self::Args) -> Result<Self::Output, Self::Error> {
         let mut headers = HeaderMap::new();
         headers.insert(CONNECTION, HeaderValue::from_static("CLOSE"));
 

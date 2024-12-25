@@ -1,6 +1,5 @@
 use rig::{
-    completion::{Prompt, ToolDefinition},
-    providers,
+    completion::ToolDefinition,
     tool::Tool,
 };
 use serde::{Deserialize, Serialize};

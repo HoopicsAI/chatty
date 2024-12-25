@@ -478,6 +478,7 @@ name = "chatty-gemini"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "chatty-toolset",
  "chrono",
  "reqwest 0.12.9",
  "rig-core",
@@ -515,6 +516,15 @@ version = "0.1.0"
 [[package]]
 name = "chatty-toolset"
 version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "chrono",
+ "reqwest 0.12.9",
+ "rig-core",
+ "serde",
+ "serde_json",
+ "thiserror 2.0.9",
+]
 
 [[package]]
 name = "chrono"
