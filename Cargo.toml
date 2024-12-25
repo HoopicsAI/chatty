@@ -1,7 +1,7 @@
 [workspace]
 members = [
     "chatty",
-    "chatty-arg",
+    "chatty-rag",
     "chatty-service",
     "chatty-prompt",
     "chatty-config",

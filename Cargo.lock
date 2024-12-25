@@ -443,10 +443,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "chatty-arg"
-version = "0.1.0"
-
-[[package]]
 name = "chatty-cli"
 version = "0.1.0"
 dependencies = [
@@ -492,6 +488,10 @@ dependencies = [
 
 [[package]]
 name = "chatty-prompt"
+version = "0.1.0"
+
+[[package]]
+name = "chatty-rag"
 version = "0.1.0"
 
 [[package]]

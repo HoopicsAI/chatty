@@ -1,5 +1,5 @@
 [package]
-name = "chatty-arg"
+name = "chatty-rag"
 version.workspace = true
 edition.workspace = true
 

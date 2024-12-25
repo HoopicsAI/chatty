@@ -21,7 +21,7 @@ pub fn mode() -> RunningMode {
     } else if args.api {
         RunningMode::API
     } else {
-        // 这里可以根据实际需求修改默认返回逻辑，比如返回错误提示或者按照默认设定的模式返回
+        // 返回错误提示
         eprintln!("Please specify either --cli or --api to choose the running mode.");
         std::process::exit(1);
     }
