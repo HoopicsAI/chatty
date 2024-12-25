@@ -9,6 +9,7 @@ members = [
     "chatty-data-handler",
     "chatty-text",
     "chatty-cli",
+    "chatty-toolset",
 ]
 
 resolver = "2"
@@ -26,7 +27,7 @@ colored = "2.0"
 lazy_static = "1.5.0"
 toml = "0.8.19"
 # rig-core = "0.6.0"
-rig-core = { path = "../codebuffer/rig/rig-core" }
+rig-core = { path = "../../../codebuffer/rig/rig-core" }
 clap = "4.5.23"
 thiserror = "2.0.9"
 anyhow = "1.0.95"

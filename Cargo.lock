@@ -512,6 +512,10 @@ name = "chatty-text"
 version = "0.1.0"
 
 [[package]]
+name = "chatty-toolset"
+version = "0.1.0"
+
+[[package]]
 name = "chrono"
 version = "0.4.39"
 source = "registry+https://github.com/rust-lang/crates.io-index"
