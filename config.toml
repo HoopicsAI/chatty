@@ -1,3 +1,7 @@
 [chatty_service]
 host = "127.0.0.1"
 port = 8080
+
+[fictionx_service]
+base_endpoint = "https://fictionx.ai/api/story"
+path_recommend = "/recommendation"

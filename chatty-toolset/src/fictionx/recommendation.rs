@@ -1,3 +1,4 @@
+use chatty_config::CHATTY_CONFIG;
 use reqwest::header::{HeaderMap, HeaderValue, CONNECTION};
 use rig::{completion::ToolDefinition, tool::Tool};
 use serde::{Deserialize, Serialize};
@@ -18,7 +19,7 @@ pub struct RecommendationError;
 #[derive(Deserialize, Serialize)]
 pub struct Recommendation;
 impl Tool for Recommendation {
-    const NAME: &'static str = "recommend";
+    const NAME: &'static str = "story_recommendation";
 
     type Error = RecommendationError;
     type Args = RecommendationArgs;
@@ -26,19 +27,16 @@ impl Tool for Recommendation {
 
     async fn definition(&self, _prompt: String) -> ToolDefinition {
         ToolDefinition {
-            name: "recommend".to_string(),
-            description: "Get the recommended novels on FictionX".to_string(),
+            name: "story_recommendation".to_string(),
+            description: "Fetch the recommended novels on FictionX".to_string(),
             parameters: json!({
                 "parameters": {
                    "type": "object",
-                "properties": {
-                    "x": {
-                        "type": "number",
-                    },
-                    "y": {
-                        "type": "number",
+                    "properties": {
+                        "dummy": {
+                            "type": "string",
+                        }
                     }
-                }
                 }
             }),
         }
@@ -48,8 +46,10 @@ impl Tool for Recommendation {
         let mut headers = HeaderMap::new();
         headers.insert(CONNECTION, HeaderValue::from_static("CLOSE"));
 
+        let url = CHATTY_CONFIG.fictionx_service.base_endpoint.clone()
+            + &CHATTY_CONFIG.fictionx_service.path_recommend;
         let response = reqwest::Client::new()
-            .post("https://fictionx.ai/api/story/recommendation")
+            .post(url)
             .headers(headers)
             .send()
             .await;
@@ -63,7 +63,6 @@ impl Tool for Recommendation {
                     if let Some(title) = story.get("title") {
                         let title =
                             format!("> {}. {}", index + 1, title.as_str().unwrap().to_string());
-                        println!("{}", title);
                         titles.push(title);
                     }
                 }

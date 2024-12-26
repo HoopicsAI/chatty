@@ -8,3 +8,4 @@ tokio.workspace = true
 clap.workspace = true
 chatty-service = { path = "../chatty-service" }
 chatty-cli = { path = "../chatty-cli" }
+colored.workspace = true

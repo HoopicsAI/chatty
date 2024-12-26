@@ -1,4 +1,5 @@
 use clap::Parser;
+use colored::Colorize;
 
 #[derive(Parser)]
 struct Args {
@@ -22,7 +23,12 @@ pub fn mode() -> RunningMode {
         RunningMode::API
     } else {
         // 返回错误提示
-        eprintln!("Please specify either --cli or --api to choose the running mode.");
+        eprintln!(
+            "{}",
+            "*** Please specify either --cli or --api to choose the running mode ***"
+                .red()
+                .bold()
+        );
         std::process::exit(1);
     }
 }

@@ -10,3 +10,4 @@ thiserror.workspace = true
 serde.workspace = true
 anyhow.workspace = true
 reqwest.workspace = true
+chatty-config = { path = "../chatty-config" }

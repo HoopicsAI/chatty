@@ -450,6 +450,7 @@ dependencies = [
  "chatty-cli",
  "chatty-service",
  "clap",
+ "colored",
  "tokio",
 ]
 
@@ -519,6 +520,7 @@ name = "chatty-toolset"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "chatty-config",
  "reqwest 0.12.9",
  "rig-core",
  "serde",
