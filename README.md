@@ -9,8 +9,6 @@ Chatty is an interactive chatbot application.
 - [x] CLI chat mode
 - [x] Attractive novel recommendations
 - [x] Engage in conversations with characters
-- [ ] Flight search & booking
-- [ ] To be continued...
 
 ## Getting Started
 

@@ -1,12 +1,10 @@
 [workspace]
 members = [
     "chatty",
-    "chatty-rag",
     "chatty-service",
     "chatty-prompt",
     "chatty-config",
     "chatty-gemini",
-    "chatty-data-handler",
     "chatty-text",
     "chatty-cli",
     "chatty-toolset",

@@ -479,15 +479,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "chatty-data-handler"
-version = "0.1.0"
-dependencies = [
- "rig-core",
- "serde",
- "serde_json",
-]
-
-[[package]]
 name = "chatty-gemini"
 version = "0.1.0"
 dependencies = [
@@ -503,10 +494,6 @@ dependencies = [
 
 [[package]]
 name = "chatty-prompt"
-version = "0.1.0"
-
-[[package]]
-name = "chatty-rag"
 version = "0.1.0"
 
 [[package]]
@@ -532,7 +519,6 @@ name = "chatty-toolset"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "chrono",
  "reqwest 0.12.9",
  "rig-core",
  "serde",

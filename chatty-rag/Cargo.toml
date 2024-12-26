@@ -1,6 +1,0 @@
-[package]
-name = "chatty-rag"
-version.workspace = true
-edition.workspace = true
-
-[dependencies]

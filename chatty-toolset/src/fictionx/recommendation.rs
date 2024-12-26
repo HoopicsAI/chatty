@@ -1,4 +1,3 @@
-use chrono::{DateTime, Utc};
 use reqwest::header::{HeaderMap, HeaderValue, CONNECTION};
 use rig::{completion::ToolDefinition, tool::Tool};
 use serde::{Deserialize, Serialize};
@@ -35,11 +34,9 @@ impl Tool for Recommendation {
                 "properties": {
                     "x": {
                         "type": "number",
-                        "description": "The number to substract from"
                     },
                     "y": {
                         "type": "number",
-                        "description": "The number to substract"
                     }
                 }
                 }
@@ -59,8 +56,6 @@ impl Tool for Recommendation {
         match response {
             Ok(res) => {
                 let json_response: serde_json::Value = res.json().await.unwrap();
-                // println!("Response: {:#?}", json_response);
-
                 let stories = &json_response["data"]["stories"];
                 let mut titles = Vec::new();
 
@@ -72,9 +67,6 @@ impl Tool for Recommendation {
                         titles.push(title);
                     }
                 }
-
-                // 打印提取的 titles
-                // println!("titles: {:?}", titles);
 
                 Ok(RecommendationOutput {
                     recommend_novels: titles,
