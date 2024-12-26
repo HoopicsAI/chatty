@@ -39,14 +39,12 @@ impl Tool for Recommendation {
             name: "story_recommendation".to_string(),
             description: "Fetch the recommended novels on FictionX".to_string(),
             parameters: json!({
-                // "parameters": {
-                   "type": "object",
-                    "properties": {
-                        "dummy": {
-                            "type": "string",
-                        }
+                "type": "object",
+                "properties": {
+                    "dummy": {
+                        "type": "string",
                     }
-                // }
+                }
             }),
         }
     }
