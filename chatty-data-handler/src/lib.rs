@@ -7,12 +7,10 @@ pub trait ChattyDataTag {
 pub struct ChattyDataHandler {}
 impl ChattyDataHandler {
     pub fn new() -> Self {
-        Self {  }
+        Self {}
     }
 }
 
 impl ChattyDataHandler {
-    pub fn handler(&self, _data: &String) {
-
-    }
+    pub fn handler(&self, _data: &String) {}
 }

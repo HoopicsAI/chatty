@@ -1,8 +1,9 @@
+use std::{env, fs};
+
 use crate::RunAgent;
 use async_trait::async_trait;
-use chatty_gemini::{agent_cli::CLIAgent, cli_chatbot_prompt};
-use chatty_toolset::fictionx::recommendation::Recommendation;
-use colored::Colorize;
+use chatty_gemini::{agent_cli::CLIAgent, cli_chatbot, cli_chatbot_prompt};
+use chatty_toolset::fictionx::{character::Character, recommendation::Recommendation};
 use rig::providers::gemini::completion::GEMINI_1_5_FLASH;
 
 #[derive(Clone)]
@@ -21,7 +22,16 @@ impl FictionXCLI {
 #[async_trait]
 impl RunAgent for FictionXCLI {
     async fn run(&self) {
-        println!("{}", "FictionX Agent is running...".red());
+        // Get the current directory and construct paths to JSON files
+        let current_dir = env::current_dir().unwrap();
+        let plan_path = current_dir.join("sample/dbafa0ef-717d-4f65-978c-84e19580618f_plan.json");
+        let premise_path =
+            current_dir.join("sample/dbafa0ef-717d-4f65-978c-84e19580618f_premise.json");
+        let story_path = current_dir.join("sample/dbafa0ef-717d-4f65-978c-84e19580618f_story.txt");
+
+        let plan_data = fs::read_to_string(&plan_path).expect("Unable to read JSON file");
+        let premise_data = fs::read_to_string(&premise_path).expect("Unable to read JSON file");
+        let story_data = fs::read_to_string(&story_path).expect("Unable to read JSON file");
 
         let agent = self.agent.client
         .agent(GEMINI_1_5_FLASH)
@@ -36,9 +46,14 @@ impl RunAgent for FictionXCLI {
             "
         )
         .max_tokens(1024)
+        // .context(&plan_data)
+        // .context(&premise_data)
+        // .context(&story_data)
         .tool(Recommendation)
+        .tool(Character)
         .build();
 
         let _ = cli_chatbot_prompt(agent).await;
+        // let _ = cli_chatbot(agent, "").await;
     }
 }

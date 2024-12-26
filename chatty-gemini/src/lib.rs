@@ -35,7 +35,7 @@ pub async fn cli_chatbot(chatbot: impl Chat, prompt: &str) -> Result<(), PromptE
     let mut stdout = io::stdout();
     let mut chat_log = vec![];
 
-    println!("Welcome to the FictionX chatbot! Type 'exit' to quit.");
+    println!("Welcome to the Chatty chatbot! Type 'exit' to quit.");
     loop {
         print!("> ");
         // Flush stdout to ensure the prompt appears before input
@@ -43,14 +43,17 @@ pub async fn cli_chatbot(chatbot: impl Chat, prompt: &str) -> Result<(), PromptE
 
         let mut input = String::new();
         match stdin.read_line(&mut input) {
-            Ok(_) => {
+            Ok(input_len) => {
                 // Remove the newline character from the input
                 let input = input.trim();
-                // Check for a command to exit
+                if input.is_empty() || input_len < 1 {
+                    println!("");
+                    continue;
+                }
+
                 if input == "exit" {
                     break;
                 }
-                // tracing::info!("Prompt:\n{}\n", input);
 
                 let prompt = prompt.to_string() + input;
                 // println!("prompt: {}", prompt);
@@ -67,8 +70,6 @@ pub async fn cli_chatbot(chatbot: impl Chat, prompt: &str) -> Result<(), PromptE
                 println!("========================== Response ============================");
                 println!("{response}");
                 println!("================================================================\n\n");
-
-                // tracing::info!("Response:\n{}\n", response);
             }
             Err(error) => println!("Error reading input: {}", error),
         }
@@ -110,7 +111,7 @@ pub async fn cli_chatbot_prompt(chatbot: impl Prompt) -> Result<(), PromptError>
                     Ok(data) => {
                         data_handler.handler(&data);
                         println!("Agent > {}", data);
-                    },
+                    }
                     Err(e) => println!("Error: {:?}", e),
                 }
                 println!("================================================================\n\n");

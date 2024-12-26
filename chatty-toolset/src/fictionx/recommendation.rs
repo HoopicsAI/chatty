@@ -1,10 +1,10 @@
 use chatty_config::CHATTY_CONFIG;
+use chatty_data_handler::ChattyDataTag;
 use reqwest::header::{HeaderMap, HeaderValue, CONNECTION};
 use rig::{completion::ToolDefinition, tool::Tool};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use uuid::Uuid;
-use chatty_data_handler::ChattyDataTag;
 
 #[derive(Deserialize)]
 pub struct RecommendationArgs {}
