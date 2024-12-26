@@ -92,9 +92,15 @@ pub async fn cli_chatbot_prompt(chatbot: impl Prompt) -> Result<(), PromptError>
 
         let mut input = String::new();
         match stdin.read_line(&mut input) {
-            Ok(_) => {
+            Ok(input_len) => {
                 // Remove the newline character from the input
                 let input = input.trim();
+
+                // 两种方式都可以过滤空输入
+                if input.is_empty() || input_len < 1 {
+                    continue;
+                }
+
                 // Check for a command to exit
                 if input == "exit" {
                     break;
