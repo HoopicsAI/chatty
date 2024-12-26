@@ -12,3 +12,4 @@ anyhow.workspace = true
 chrono.workspace = true
 reqwest.workspace = true
 chatty-toolset = { path = "../chatty-toolset" }
+chatty-data-handler = { path = "../chatty-data-handler" }

@@ -11,3 +11,5 @@ serde.workspace = true
 anyhow.workspace = true
 reqwest.workspace = true
 chatty-config = { path = "../chatty-config" }
+uuid.workspace = true
+chatty-data-handler = { path = "../chatty-data-handler" }

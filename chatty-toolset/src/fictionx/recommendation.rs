@@ -3,13 +3,22 @@ use reqwest::header::{HeaderMap, HeaderValue, CONNECTION};
 use rig::{completion::ToolDefinition, tool::Tool};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
+use uuid::Uuid;
+use chatty_data_handler::ChattyDataTag;
 
 #[derive(Deserialize)]
 pub struct RecommendationArgs {}
 
 #[derive(Deserialize, Serialize)]
 pub struct RecommendationOutput {
+    pub id: String,
     pub recommend_novels: Vec<String>,
+}
+
+impl ChattyDataTag for RecommendationOutput {
+    fn tag(&self) -> uuid::Uuid {
+        Uuid::parse_str(&self.id).unwrap()
+    }
 }
 
 #[derive(Debug, thiserror::Error)]
@@ -68,6 +77,7 @@ impl Tool for Recommendation {
                 }
 
                 Ok(RecommendationOutput {
+                    id: Uuid::new_v4().to_string(),
                     recommend_novels: titles,
                 })
             }
