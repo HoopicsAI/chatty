@@ -44,33 +44,6 @@ curl -X POST http://127.0.0.1:8080/api/chat_with_fictonx -H "Content-Type: appli
 ---
 
 ## CLI Mode
-
-### Command to Start CLI Mode:
-
-```
-./target/debug/chatty cli "Kitajima Kyouko" "Kitajima Kyouko is established as being male but turned into a ghoul by some mutated artifacts to seek help from for medical treatment."
-```
-
-
-### Example Run:
-```
-Running in CLI mode
-Character Name: Kitajima Kyouko
-Character Description: Kitajima Kyouko is established as being male but turned into a ghoul by some mutated artifacts to seek help from for medical treatment.
-Welcome to the FictionX chatbot! Type 'exit' to quit.
-what are you doing?
-========================== Response ============================
-Trying to fix this mess, one way or another. Gotta get this ghoul-curse sorted.
-================================================================
-do you like cats?
-========================== Response ============================
-Nah, not really into cats. Dogs are more my speed.
-================================================================
-
-```
-
-## Custom Toolset in CLI
-
 ### Example Usage:
 
 ```
@@ -80,7 +53,6 @@ Welcome to the FictionX chatbot! Type 'exit' to quit.
 ========================== Response ============================
 "Good morning! How can I help you today?\n"
 ================================================================
-
 
 > recommend novels from fictionx
 ========================== Response ============================
@@ -106,4 +78,6 @@ Welcome to the FictionX chatbot! Type 'exit' to quit.
 ---
 
 ## Note on `rig-core`
-The support for Gemini in `rig-core v0.6.0` is incomplete; modifications to the `rig-core v0.6.0` code are necessary when defining tools to ensure proper functionality.
+The support for Gemini in `rig-core v0.6.0` is incomplete; modifications to the `rig-core v0.6.0` code are necessary when defining tools to ensure proper functionality.    
+
+### Here is the modified version [rig](https://github.com/zTgx/rig) for this project. 

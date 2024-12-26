@@ -31,13 +31,13 @@ impl Tool for Character {
             name: "chat_with_character".to_string(),
             description: "Request an chat with character".to_string(),
             parameters: json!({
-                "parameters": {
+                // "parameters": {
                    "type": "object",
                     "properties": {
                         "character_name": {
                             "type": "string",
                         }
-                    }
+                    // }
                 }
             }),
         }
