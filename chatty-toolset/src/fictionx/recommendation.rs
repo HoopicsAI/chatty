@@ -12,65 +12,8 @@ pub struct RecommendationOutput {
     pub recommend_novels: Vec<String>,
 }
 
-#[derive(Deserialize, Serialize)]
-pub struct RecommendationResponse {
-    #[serde(rename = "job_id")]
-    pub job_id: String,
-
-    #[serde(rename = "user_id")]
-    pub user_id: String,
-
-    #[serde(rename = "user_nickname")]
-    pub user_nickname: String,
-
-    #[serde(rename = "model")]
-    pub model: String,
-
-    #[serde(rename = "cover_img")]
-    pub cover_img: String,
-
-    #[serde(rename = "cover_img_status")]
-    pub cover_img_status: String,
-
-    #[serde(rename = "title")]
-    pub title: String,
-
-    #[serde(rename = "premise")]
-    pub premise: String,
-
-    #[serde(rename = "setting")]
-    pub setting: String,
-
-    #[serde(rename = "genres")]
-    pub genres: String,
-
-    #[serde(rename = "latest_chapter_num")]
-    pub latest_chapter_num: i32,
-
-    #[serde(rename = "total_likes")]
-    pub total_likes: i64,
-
-    #[serde(rename = "self_collect")]
-    pub self_collect: bool,
-
-    #[serde(rename = "self_like")]
-    pub self_like: bool,
-
-    #[serde(rename = "total_collects")]
-    pub total_collects: i64,
-
-    #[serde(rename = "collection_id")]
-    pub collection_id: String,
-
-    #[serde(rename = "created_time")]
-    pub created_time: DateTime<Utc>,
-
-    #[serde(rename = "updated_time")]
-    pub updated_time: DateTime<Utc>,
-}
-
 #[derive(Debug, thiserror::Error)]
-#[error("Math error")]
+#[error("Recommendation error")]
 pub struct RecommendationError;
 
 #[derive(Deserialize, Serialize)]
@@ -112,28 +55,35 @@ impl Tool for Recommendation {
             .post("https://fictionx.ai/api/story/recommendation")
             .headers(headers)
             .send()
-            .await
-            .unwrap();
+            .await;
+        match response {
+            Ok(res) => {
+                let json_response: serde_json::Value = res.json().await.unwrap();
+                // println!("Response: {:#?}", json_response);
 
-        let json_response: serde_json::Value = response.json().await.unwrap();
-        // println!("Response: {:#?}", json_response);
+                let stories = &json_response["data"]["stories"];
+                let mut titles = Vec::new();
 
-        let stories = &json_response["data"]["stories"];
-        let mut titles = Vec::new();
+                for (index, story) in stories.as_array().unwrap().iter().enumerate() {
+                    if let Some(title) = story.get("title") {
+                        let title =
+                            format!("> {}. {}", index + 1, title.as_str().unwrap().to_string());
+                        println!("{}", title);
+                        titles.push(title);
+                    }
+                }
 
-        for (index, story) in stories.as_array().unwrap().iter().enumerate() {
-            if let Some(title) = story.get("title") {
-                let title = format!("> {}. {}", index + 1, title.as_str().unwrap().to_string());
-                println!("{}", title);
-                titles.push(title);
+                // 打印提取的 titles
+                // println!("titles: {:?}", titles);
+
+                Ok(RecommendationOutput {
+                    recommend_novels: titles,
+                })
+            }
+            Err(e) => {
+                eprintln!("Error: {:?}", e);
+                return Err(RecommendationError);
             }
         }
-
-        // 打印提取的 titles
-        // println!("titles: {:?}", titles);
-
-        Ok(RecommendationOutput {
-            recommend_novels: titles,
-        })
     }
 }

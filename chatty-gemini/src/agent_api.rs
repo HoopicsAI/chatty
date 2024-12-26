@@ -1,6 +1,6 @@
 use rig::completion::{Chat, Message};
 use rig::providers::gemini::{completion::GEMINI_1_5_FLASH, Client};
-use std::{fs, env};
+use std::{env, fs};
 
 pub struct APIAgent {
     pub client: Client,
@@ -20,14 +20,16 @@ impl APIAgent {
     pub async fn chat(&self, prompt: &str, message: &str) -> String {
         let current_dir = env::current_dir().unwrap();
         let plan_path = current_dir.join("sample/dbafa0ef-717d-4f65-978c-84e19580618f_plan.json");
-        let premise_path = current_dir.join("sample/dbafa0ef-717d-4f65-978c-84e19580618f_premise.json");
+        let premise_path =
+            current_dir.join("sample/dbafa0ef-717d-4f65-978c-84e19580618f_premise.json");
         let story_path = current_dir.join("sample/dbafa0ef-717d-4f65-978c-84e19580618f_story.txt");
 
         let plan_data = fs::read_to_string(&plan_path).expect("Unable to read JSON file");
         let premise_data = fs::read_to_string(&premise_path).expect("Unable to read JSON file");
         let story_data = fs::read_to_string(&story_path).expect("Unable to read JSON file");
 
-        let agent = self.client
+        let agent = self
+            .client
             .agent(&self.model)
             .preamble("Be creative and concise. Answer directly and clearly.")
             .context(&plan_data)

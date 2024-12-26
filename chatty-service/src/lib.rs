@@ -19,11 +19,7 @@ pub async fn main() -> std::io::Result<()> {
     );
 
     HttpServer::new(move || {
-        let scope = web::scope("/api")
-            .route(
-                "/chat",
-                web::post().to(routes::chat),
-            );
+        let scope = web::scope("/api").route("/chat", web::post().to(routes::chat));
         App::new().service(scope)
     })
     .bind((host, port))?

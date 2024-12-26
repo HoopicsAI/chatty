@@ -11,3 +11,6 @@ serde_json.workspace = true
 rig-core.workspace = true
 thiserror.workspace = true
 colored.workspace = true
+chatty-toolset = { path = "../chatty-toolset" }
+async-trait.workspace = true
+tokio.workspace = true

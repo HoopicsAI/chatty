@@ -16,7 +16,9 @@ pub async fn chat(body: web::Json<ChatMessage>) -> impl Responder {
     );
 
     let prompt = create_prompt!(body.character_name, body.description, body.message);
-    let response = chatty_gemini::agent_api::APIAgent::new().chat(&prompt, &body.message).await;
+    let response = chatty_gemini::agent_api::APIAgent::new()
+        .chat(&prompt, &body.message)
+        .await;
     let body = ChatMessageReply::new(response);
     HttpResponse::Ok().json(body)
 }
