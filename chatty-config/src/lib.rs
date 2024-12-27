@@ -12,6 +12,7 @@ pub struct ChattyServiceConfig {
 pub struct FictionXServiceConfig {
     pub base_endpoint: String,
     pub path_recommend: String,
+    pub path_login: String,
 }
 
 #[derive(Deserialize, Debug, Clone)]

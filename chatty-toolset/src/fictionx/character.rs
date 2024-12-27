@@ -1,4 +1,3 @@
-use reqwest::header::{HeaderMap, HeaderValue, CONNECTION};
 use rig::{completion::ToolDefinition, tool::Tool};
 use serde::{Deserialize, Serialize};
 use serde_json::json;

@@ -5,3 +5,4 @@ port = 8080
 [fictionx_service]
 base_endpoint = "https://fictionx.ai/api/story"
 path_recommend = "/recommendation"
+path_login = "/siws_verify"
