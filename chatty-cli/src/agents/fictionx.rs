@@ -1,7 +1,9 @@
 use crate::RunAgent;
 use async_trait::async_trait;
 use chatty_gemini::{agent_cli::CLIAgent, cli_chatbot_prompt};
-use chatty_toolset::fictionx::{character::Character, recommendation::Recommendation};
+use chatty_toolset::fictionx::{
+    character::Character, list_novels::ListNovels, recommendation::Recommendation,
+};
 use rig::providers::gemini::completion::GEMINI_1_5_FLASH;
 
 #[derive(Clone)]
@@ -35,6 +37,7 @@ impl RunAgent for FictionXCLI {
         .max_tokens(1024)
         .tool(Recommendation)
         .tool(Character)
+        .tool(ListNovels)
         .build();
 
         let _ = cli_chatbot_prompt(agent).await;
