@@ -3,6 +3,8 @@ use rig::{completion::ToolDefinition, tool::Tool};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 
+use crate::json_schema;
+
 #[derive(Deserialize, Serialize)]
 pub struct LoginArgs {
     pub public_address: String,
@@ -31,17 +33,10 @@ impl Tool for Login {
         ToolDefinition {
             name: "login".to_string(),
             description: "Help me login FictionX using Solana account".to_string(),
-            parameters: json!({
-                "type": "object",
-                "properties": {
-                    "public_address": {
-                        "type": "string",
-                    },
-                    "signature": {
-                        "type": "string",
-                    }
-                }
-            }),
+            parameters: json_schema!(
+                public_address: String,
+                signature: String,
+            ),
         }
     }
 

@@ -2,6 +2,8 @@ use rig::{completion::ToolDefinition, tool::Tool};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 
+use crate::json_schema;
+
 #[derive(Deserialize)]
 pub struct ListNovelsArgs {
     pub count: u64,
@@ -29,14 +31,9 @@ impl Tool for ListNovels {
         ToolDefinition {
             name: "list_novels".to_string(),
             description: "Show me {number} count of novels".to_string(),
-            parameters: json!({
-                "type": "object",
-                "properties": {
-                    "count": {
-                        "type": "number",
-                    }
-                }
-            }),
+            parameters: json_schema!(
+                count: u32,
+            ),
         }
     }
 

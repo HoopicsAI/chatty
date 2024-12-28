@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 use serde_json::json;
 use uuid::Uuid;
 
+use crate::json_schema;
+
 #[derive(Deserialize)]
 pub struct RecommendationArgs {}
 
@@ -38,14 +40,9 @@ impl Tool for Recommendation {
         ToolDefinition {
             name: "story_recommendation".to_string(),
             description: "Fetch the recommended novels on FictionX".to_string(),
-            parameters: json!({
-                "type": "object",
-                "properties": {
-                    "dummy": {
-                        "type": "string",
-                    }
-                }
-            }),
+            parameters: json_schema!(
+                dummy: String,
+            ),
         }
     }
 

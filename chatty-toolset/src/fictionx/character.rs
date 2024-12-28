@@ -2,6 +2,8 @@ use rig::{completion::ToolDefinition, tool::Tool};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 
+use crate::json_schema;
+
 #[derive(Deserialize)]
 pub struct CharacterArgs {
     pub character_name: String,
@@ -29,14 +31,9 @@ impl Tool for Character {
         ToolDefinition {
             name: "chat_with_character".to_string(),
             description: "Request an chat with character".to_string(),
-            parameters: json!({
-                "type": "object",
-                "properties": {
-                    "character_name": {
-                        "type": "string",
-                    }
-                }
-            }),
+            parameters: json_schema!(
+                character_name: string,
+            ),
         }
     }
 
